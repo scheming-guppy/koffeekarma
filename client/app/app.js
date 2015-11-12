@@ -1,33 +1,35 @@
 angular.module('tickit', [
   'services',
-  'ui.router',
+  'ngRoute',
   'authorization',
   'mainpage'])
 
-.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/login');
-  $stateProvider
-  .state('/signin', {
+.config(function ($routeProvider, $httpProvider) {
+  $routeProvider
+  .when('/signin', {
     templateUrl: 'app/user/signin.html',
     controller: 'AuthController'
   })
-  .state('/signup', {
+  .when('/signup', {
     templateUrl: 'app/user/signup.html',
     controller: 'AuthController'
   })
-  .state('/about', {
+  .when('/about', {
     templateUrl: 'app/main/about.html'
   })
-  .state('/main', {
+  .when('/main', {
     tempalteUrl: 'app/main/main.html',
     controller: 'MainController'
   })
-  .state('/send', {
+  .when('/send', {
     tempalteUrl: 'app/tickets/send.html',
     controller: 'SendController'
   })
-  .state('/redeem', {
+  .when('/redeem', {
     templateUrl: 'app/tickets/redeem.html',
     controller: 'RedeemController'
-  });
+  })
+  .otherwise({
+      redirectTo: '/signin'
+    });
 });
