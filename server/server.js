@@ -3,7 +3,7 @@ var express = require('express');
 var morgan = require('morgan');
 var parser = require('body-parser');
 // Router
-var router = require('./routes.js');
+//var router = require('./routes.js');
 
 var app = express();
 
@@ -17,9 +17,9 @@ app.set("port", port);
 app.use(morgan('dev'));
 app.use(parser.json());
 
-Set up our routes
-app.use("/api/user", router);
-app.use("api/ticket", router);
+//Set up our routes
+// app.use("/api/user", router);
+// app.use("api/ticket", router);
 
 // Serve the client files
 app.use(express.static(__dirname + "/../client"));
