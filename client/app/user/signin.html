@@ -1,7 +1,8 @@
 <div id='signin' class='input-group container-fluid'>
   <h1>sign in</h1>
   <form name="signinForm" ng-submit='signin()'>
-    <input type='text' placeholder='Username' ng-model='user.username'>
+    <div ng-model="hideSigninError" ng-hide="hideSigninError" class="ng-hide">The user name and password do not match.</div>
+    <input type='text' placeholder='Username' ng-model='user.userName'>
     <input type="password" placeholder='Password' ng-model='user.password'>
     <button>Login</button>
   </form>

@@ -11,11 +11,11 @@ angular.module('services', [])
     });
   };
 
-  var redeem = function(userID) {
+  var redeem = function(user) {
     return $http( {
       method: 'POST',
       url: '/api/tickets/redeem',
-      data: userID
+      data: user
     })
     .then(function(response) {
       return response.data;
@@ -41,6 +41,8 @@ angular.module('services', [])
     })
     .then(function(response) {
       return response.data;
+    }, function(error) {
+      console.error("The user name and password do not match.");
     });
   };
 
