@@ -23,12 +23,12 @@ angular.module('mainpage', [])
   $scope.user.age = Auth.user.age;
   $scope.user.userName = Auth.user.userName;
   $scope.user.id = Auth.user.id;
+  $scope.user.message = "Have a nice day! Enjoy your coffee!";
 
   
   $scope.send = function() {
     console.log('reaching the controller, send function');
-    //get user id from session
-    $scope.user.userID = 1;
+    console.log($scope.user);
     //use service to make request to server (post request)
     Tickets.send($scope.user).then(function() {
       console.log('sent!');
@@ -45,8 +45,8 @@ angular.module('mainpage', [])
       $scope.hideNoTicketsMessage = false;
       $scope.toggleRedeemBtn = "";
     } else {
-      $scope.user.userID = 1;
       Tickets.redeem($scope.user).then(function(data) {
+        $scope.ticketID = data.id;
         console.log(data.id);//The ticket barcode
         $scope.user.tickets--;
       });
