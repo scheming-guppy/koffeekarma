@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('./db');
+var db = require('./server/db');
 // Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');
@@ -10,7 +10,7 @@ var app = express();
 
 module.exports.app = app;
 
-var port = 8000;
+var port = process.env.PORT || 8000;
 app.set("port", port);
 
 
