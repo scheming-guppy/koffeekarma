@@ -3,6 +3,7 @@ angular.module('authorization', [])
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   
   $scope.user = {};
+  $scope.hideSigninError = true;
 
   $scope.signin = function() {
     Auth.signin($scope.user)
@@ -12,6 +13,7 @@ angular.module('authorization', [])
       $location.path('/main');
     })
     .catch(function (error) {
+      $scope.hideSigninError = false;
       console.error(error);
     });
   };
