@@ -29,7 +29,7 @@ angular.module('tickit', [
   })
   .when('/redeem', {
     templateUrl: 'app/tickets/redeem.html',
-    controller: 'RedeemController',
+    //controller: 'RedeemController',
     authenticate: true
   })
   .otherwise({

@@ -16,6 +16,9 @@ angular.module('services', [])
       method: 'POST',
       url: '/api/tickets/redeem',
       data: userID
+    })
+    .then(function(response) {
+      return response.data;
     });
   };
 

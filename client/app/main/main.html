@@ -12,8 +12,10 @@
 
 <div class="container col-md-6" style="float: right">
   <button ng-click="send()">Send</button>
-  <div ng-hide="hideMessage" class="ng-hide">You just tickIt forward!</div>
+  <div ng-hide="hideSentMessage" class="ng-hide">You just tickIt forward!</div>
   <button ng-click="redeem()">Redeem</button>
-  <span>Redeem Number</span>
+  <div ng-model="user.tickets">{{ user.tickets }}</div>
+  <div ng-hide="hideNoTicketsMessage" class="ng-hide">Sorry, you have no more tickets!</div>
+  <!-- <span>Redeem Number</span> -->
   <div>Messages</div>
 </div>

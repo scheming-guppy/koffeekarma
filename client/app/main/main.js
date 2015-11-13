@@ -5,23 +5,37 @@ angular.module('mainpage', [])
   console.log('this is reaching the controller');
 
   //hide the sent ticket message
-  $scope.hideMessage = true;
+  $scope.hideSentMessage = true;
+  $scope.hideNoTicketsMessage = true;
 
   $scope.user = {};
+
+  //TODO: tickets will be retrieved from database
+  $scope.user.tickets = 1;
   
   $scope.send = function() {
-    console.log('reaching the controller');
+    console.log('reaching the controller, send function');
     //get user id from session
     $scope.user.userID = 1;
     //use service to make request to server (post request)
     Tickets.send($scope.user).then(function() {
       console.log('sent!');
-      $scope.hideMessage = false;
-      
+      $scope.hideSentMessage = false;
+
     });
   };
 
   $scope.redeem = function() {
+    console.log('reaching the controller, redeem function');
+    if($scope.user.tickets <= 0) {
+      $scope.hideNoTicketsMessage = false;
+    } else {
+      $scope.user.userID = 1;
+      Tickets.redeem($scope.user).then(function(data) {
+        console.log(data.id);//The ticket barcode
+        $scope.user.tickets--;
+      });
+    }
 
   };
 
