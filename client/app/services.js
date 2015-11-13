@@ -1,5 +1,31 @@
 angular.module('services', [])
 
+.factory('Tickets', function($http, $location, $window) {
+
+  var send = function(userID) {
+    console.log('Reaching the service');
+    return $http( {
+      method: 'POST',
+      url: '/api/tickets/send',
+      data: userID
+    });
+  };
+
+  var redeem = function(userID) {
+    return $http( {
+      method: 'POST',
+      url: '/api/tickets/redeem',
+      data: userID
+    });
+  };
+
+  return {
+    send: send,
+    redeem: redeem
+  };
+
+})
+
 .factory('Auth', function($http, $location, $window) {
 
   var signin = function(user) {
