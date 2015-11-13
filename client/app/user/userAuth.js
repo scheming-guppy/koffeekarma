@@ -6,8 +6,16 @@ angular.module('authorization', [])
 
   $scope.signin = function() {
     Auth.signin($scope.user)
-    .then(function (token) {
-      $window.localStorage.setItem('com.tickit', token);
+    .then(function (data) {
+      Auth.user.id = data.id;
+      Auth.user.userName = data.userName;
+      Auth.user.firstName = data.firstName;
+      Auth.user.lastName = data.lastName;
+      Auth.user.age = data.age;
+      Auth.user.ticketSent = data.ticketSent;
+      Auth.user.ticketAvailable = data.ticketAvailable;
+      console.log(Auth.user);
+      $window.localStorage.setItem('com.tickit', data.token);
       $location.path('/main');
     })
     .catch(function (error) {

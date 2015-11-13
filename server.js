@@ -15,15 +15,38 @@ app.set("port", port);
 
 
 // Logging and parsing
+
+
 app.use(morgan('dev'));
 app.use(parser.json());
 
 //Set up our routes
+app.post('/api/user/signin', function(req, res) {
+  console.log(req.body);
+  res.send({id: 1, userName: "Freddie", firstName: "Fred", lastName: "Zirdig", password: "This is my password",
+            age: 40, ticketSent: 4, ticketAvailable: 2});
+});
+
+app.post('/api/user/signup', function(req, res) {
+  console.log(req.body);
+  res.send({id: 1, userName: "Freddie", firstName: "Fred", lastName: "Zirdig", password: "This is my password",
+            age: 40, ticketSent: 4, ticketAvailable: 2});
+});
+
+app.post('/api/tickets/send', function(req, res) {
+  console.log(req.body);
+  res.sendStatus(201);
+});
+
+app.post('/api/tickets/redeem', function(req, res) {
+  console.log(req.body);
+  res.send({id: 342346245});//Sends back ticket object with the unique id
+});
 // app.use("/api/user", router);
 // app.use("api/ticket", router);
 
 // Serve the client files
-app.use(express.static(__dirname + "/../client"));
+app.use(express.static(__dirname + "/client"));
 
 // If we are being run directly, run the server.
 if (!module.parent) {

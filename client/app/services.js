@@ -31,6 +31,8 @@ angular.module('services', [])
 
 .factory('Auth', function($http, $location, $window) {
 
+  var user = {};
+
   var signin = function(user) {
     return $http( {
       method: 'POST',
@@ -38,7 +40,7 @@ angular.module('services', [])
       data: user
     })
     .then(function(response) {
-      return response.data.token;
+      return response.data;
     });
   };
 
@@ -66,7 +68,8 @@ angular.module('services', [])
     signin: signin,
     signup: signup,
     isAuth: isAuth,
-    signout: signout
+    signout: signout,
+    user: user
   };
 
 });
