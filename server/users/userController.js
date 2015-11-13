@@ -4,6 +4,7 @@ var jwt = require('jwt-simple');
 
 module.exports = {
 
+
   signin: function (request, response, next) {
     var username = request.body.username;
     var password = request.body.password;

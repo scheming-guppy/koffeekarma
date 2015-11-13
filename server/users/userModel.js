@@ -3,6 +3,7 @@ var bcrypt = require('bcrypt-nodejs');
 var Q = require('q');
 var salt_factor = 10;
 
+
 // var UserSchema = new mongoose.Schema({
 //   username: {
 //     type: String,
