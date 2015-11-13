@@ -2,12 +2,12 @@ angular.module('services', [])
 
 .factory('Tickets', function($http, $location, $window) {
 
-  var send = function(userID) {
+  var send = function(user) {
     console.log('Reaching the service');
     return $http( {
       method: 'POST',
       url: '/api/tickets/send',
-      data: userID
+      data: user
     });
   };
 
