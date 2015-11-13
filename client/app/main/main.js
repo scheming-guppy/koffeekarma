@@ -1,6 +1,6 @@
 angular.module('mainpage', [])
 
-.controller('MainController', ['$scope', '$window', '$location', 'Tickets', function($scope, $window, $location, Tickets) {
+.controller('MainController', ['$scope', '$window', '$location', 'Tickets', 'Auth', function($scope, $window, $location, Tickets, Auth) {
 
   console.log('this is reaching the controller');
 
@@ -11,7 +11,7 @@ angular.module('mainpage', [])
   $scope.user = {};
 
   //TODO: tickets will be retrieved from database
-  $scope.user.tickets = 1;
+  $scope.user.tickets = Auth.user.ticketSent - Auth.user.ticketAvailable;
   
   $scope.send = function() {
     console.log('reaching the controller, send function');
