@@ -24,12 +24,12 @@ angular.module('tickit', [
   })
   .when('/send', {
     tempalteUrl: 'app/tickets/send.html',
-    controller: 'SendController',
+    //controller: 'SendController',
     authenticate: true
   })
   .when('/redeem', {
     templateUrl: 'app/tickets/redeem.html',
-    controller: 'RedeemController',
+    //controller: 'RedeemController',
     authenticate: true
   })
   .otherwise({
