@@ -7,8 +7,23 @@ angular.module('authorization', [])
   $scope.signin = function() {
     Auth.signin($scope.user)
     .then(function (token) {
-      $window.localStorage.setItem('')
+      $window.localStorage.setItem('com.tickit', token);
+      $location.path('/main');
     })
-  }
+    .catch(function (error) {
+      console.error(error);
+    });
+  };
 
-})
+  $scope.signup = function() {
+    Auth.signup($scope.user)
+      .then(function (token) {
+        $window.localStorage.setItem('com.tickit', token);
+        $location.path('/main');
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
+
+});

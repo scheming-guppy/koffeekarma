@@ -24,10 +24,20 @@ angular.module('services', [])
     });
   };
 
+  var isAuth = function () {
+    return !!$window.localStorage.getItem('com.tickit');
+  };
+
+  var signout = function () {
+    $window.localStorage.removeItem('com.tickit');
+    $location.path('/signin');
+  };
 
   return {
     signin: signin,
-    signup: signup
+    signup: signup,
+    isAuth: isAuth,
+    signout: signout
   };
 
 });

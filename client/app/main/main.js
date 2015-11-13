@@ -7,7 +7,10 @@ angular.module('mainpage', [])
   var send = function() {
     //get user id
     //use service to make request to server (post request)
+  };
 
+  var redeem = function() {
+    
   };
 
 }]);
