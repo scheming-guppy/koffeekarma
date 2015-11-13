@@ -3,6 +3,7 @@ var db = require('./server/db');
 // Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');
+var controllers = require('./server/controllers');
 // Router
 //var router = require('./routes.js');
 
@@ -22,25 +23,30 @@ app.use(parser.json());
 
 //Set up our routes
 app.post('/api/user/signin', function(req, res) {
-  console.log(req.body);
-  res.send({id: 1, userName: "Freddie", firstName: "Fred", lastName: "Zirdig", password: "This is my password",
-            age: 40, ticketSent: 4, ticketAvailable: 2});
+  controllers.signin.post(req, res);
+
+  // models.users.signin
+  // res.send({id: 1, userName: "Freddie", firstName: "Fred", lastName: "Zirdig", password: "This is my password",
+  //           age: 40, ticketSent: 4, ticketAvailable: 2});
 });
 
 app.post('/api/user/signup', function(req, res) {
-  console.log(req.body);
-  res.send({id: 1, userName: "Freddie", firstName: "Fred", lastName: "Zirdig", password: "This is my password",
-            age: 40, ticketSent: 4, ticketAvailable: 2});
+  console.log("in server.js.......",req.body);
+  controllers.signup.post(req, res);
+  // res.send({id: 1, userName: "Freddie", firstName: "Fred", lastName: "Zirdig", password: "This is my password",
+  //           age: 40, ticketSent: 4, ticketAvailable: 2});
 });
 
 app.post('/api/tickets/send', function(req, res) {
   console.log(req.body);
-  res.sendStatus(201);
+  controllers.send.post(req, res);
+  // res.sendStatus(201);
 });
 
 app.post('/api/tickets/redeem', function(req, res) {
   console.log(req.body);
-  res.send({id: 342346245});//Sends back ticket object with the unique id
+  controllers.redeem.post(req);
+  // res.send({id: 342346245});//Sends back ticket object with the unique id
 });
 // app.use("/api/user", router);
 // app.use("api/ticket", router);
