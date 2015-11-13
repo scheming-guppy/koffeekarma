@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/shashi-dokania/2015-10-greenfield#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
     "browser-sync": "^2.10.0",
     "express": "^4.13.3",
@@ -24,8 +25,10 @@
     "gulp-if": "^2.0.0",
     "gulp-nodemon": "^2.0.4",
     "gulp-shell": "^0.5.1",
+    "jwt-simple": "^0.3.1",
     "morgan": "^1.6.1",
-    "mysql": "^2.9.0"
+    "mysql": "^2.9.0",
+    "q": "^1.4.1"
   },
   "devDependencies": {
     "gulp-minify-css": "^1.2.1",
