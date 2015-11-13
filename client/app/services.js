@@ -51,7 +51,7 @@ angular.module('services', [])
       data: user
     })
     .then(function(response) {
-      return response.data.token;
+      return response.data;
     });
   };
 
