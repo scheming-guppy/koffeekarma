@@ -10,8 +10,12 @@ angular.module('mainpage', [])
 
   $scope.user = {};
 
-  //TODO: tickets will be retrieved from database
   $scope.user.tickets = Auth.user.ticketSent - Auth.user.ticketAvailable;
+  $scope.user.firstName = Auth.user.firstName;
+  $scope.user.lastName = Auth.user.lastName;
+  $scope.user.age = Auth.user.age;
+  $scope.user.userName = Auth.user.userName;
+
   
   $scope.send = function() {
     console.log('reaching the controller, send function');
