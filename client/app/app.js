@@ -18,7 +18,7 @@ angular.module('tickit', [
     templateUrl: 'app/main/about.html'
   })
   .when('/main', {
-    tempalteUrl: 'app/main/main.html',
+    templateUrl: 'app/main/main.html',
     controller: 'MainController'
   })
   .when('/send', {
