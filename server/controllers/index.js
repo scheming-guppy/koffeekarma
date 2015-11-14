@@ -36,6 +36,7 @@ module.exports = {
       } else {
 
       console.log("Is this wroking headers")
+      console.log("This is a signup attempt that shoudl work", results)
       // res.sendStatus(201);
       res.send(results)
       } 

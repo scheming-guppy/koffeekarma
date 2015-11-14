@@ -16,6 +16,7 @@ module.exports = {
       var queryStr = "INSERT INTO users (userName, firstName, lastName, password, ticketSent, ticketAvailable) VALUES ('" + params[0] + "', '" + params[1] + "', '" + params[2] + "', '" + params[3] + "', 1, 0);";
       db.query(queryStr, function(err, results) {
         console.log("in the database hopefully....", err)
+        console.log("in signup", results)
         callback(err, results);
       });
     },
