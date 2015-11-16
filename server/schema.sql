@@ -9,10 +9,11 @@ CREATE TABLE users (
   firstName varchar(20) NOT NULL,
   lastName varchar(30) NOT NULL,
   password varchar(50) NOT NULL,
-  age int(3),
+  ticketRedeemed int(5),
   ticketSent int(5),
   ticketAvailable int(5),
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  UNIQUE (userName)
 
   /*Credit card*/
   /*Image*/

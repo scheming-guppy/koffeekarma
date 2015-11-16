@@ -66,6 +66,7 @@ module.exports = {
         if (err) {
           res.sendStatus(401);
         } else {
+          console.log('results of redeem call controllers index',results)
           res.sendStatus(201);
         }
           // res.sendStatus(201);
