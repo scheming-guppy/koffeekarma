@@ -45,7 +45,7 @@ app.post('/api/tickets/send', function(req, res) {
 
 app.post('/api/tickets/redeem', function(req, res) {
   console.log(req.body);
-  controllers.redeem.post(req);
+  controllers.redeem.post(req, res);
   // res.send({id: 342346245});//Sends back ticket object with the unique id
 });
 // app.use("/api/user", router);

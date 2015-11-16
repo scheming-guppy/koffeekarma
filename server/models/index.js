@@ -13,7 +13,7 @@ module.exports = {
     },
     signup: function (params, callback) {
       console.log('models signup', params);
-      var queryStr = "INSERT INTO users (userName, firstName, lastName, password, ticketSent, ticketAvailable) VALUES ('" + params[0] + "', '" + params[1] + "', '" + params[2] + "', '" + params[3] + "', 1, 0);";
+      var queryStr = "INSERT INTO users (userName, firstName, lastName, password, ticketRedeemed, ticketSent, ticketAvailable) VALUES ('" + params[0] + "', '" + params[1] + "', '" + params[2] + "', '" + params[3] + "', 0, 1, 0);";
       db.query(queryStr, function(err, results) {
         console.log("in the database hopefully....", err)
         console.log("in signup", results)
@@ -32,15 +32,24 @@ module.exports = {
         idSearchResults = results;
         var createTicket = "INSERT INTO tickets (redeemed, sentBy, receivedBy, message) VALUES (false, " + params[0] + ", " + results[0].id + ", '" + params[1] + "');";
         db.query(createTicket, function (err, results) {
-          console.log("possibly created ticket with randomid (?)", results, "err", err);
-          callback(idSearchErr, idSearchResults);
+          var userUpdate = "UPDATE users SET ticketSent = ticketSent + 1 WHERE id=" + params[0] + ";";
+          db.query(userUpdate, function (err, results) {
+            if (err) {
+              callback(err, results);
+            } else {
+              console.log("possibly created ticket with randomid (?)", results, "err", err);
+              callback(idSearchErr, idSearchResults);
+            }
+          })
         });
       });
     },
     redeem: function (params, callback) {
       console.log("This is params", params)
       var ticket = "SELECT * FROM tickets WHERE receivedBy LIKE " + params[0] + " AND redeemed LIKE false LIMIT 1;";
+      console.log(ticket)
       db.query(ticket, function(err, results) {
+        console.log('redeem select query results', results)
         var ticketSearchResult = results;
         var ticketSearchError = err;
         console.log('ticket query redeem result', results)
