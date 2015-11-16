@@ -30,15 +30,23 @@ module.exports = {
         console.log("results from randomID query", results, "err", err)
         idSearchErr = err;
         idSearchResults = results;
-        var createTicket = "INSERT INTO tickets (redeemed, sentBy, receivedBy, message) VALUES (false, " + params[0] + ", " + results[0].id + ", '" + params[1] + "');";
+        var receivingUser = results[0].id;
+        var createTicket = "INSERT INTO tickets (redeemed, sentBy, receivedBy, message) VALUES (false, " + params[0] + ", " + receivingUser + ", '" + params[1] + "');";
         db.query(createTicket, function (err, results) {
-          var userUpdate = "UPDATE users SET ticketSent = ticketSent + 1 WHERE id=" + params[0] + ";";
-          db.query(userUpdate, function (err, results) {
+          var senderUpdate = "UPDATE users SET ticketSent = ticketSent + 1 WHERE id=" + params[0] + ";";
+          db.query(senderUpdate, function (err, results) {
             if (err) {
               callback(err, results);
             } else {
-              console.log("possibly created ticket with randomid (?)", results, "err", err);
-              callback(idSearchErr, idSearchResults);
+              var receiverUpdate = "UPDATE users SET ticketAvailable = ticketAvailable + 1 WHERE id=" + receivingUser + ";";
+              db.query(receiverUpdate, function (err, results) {
+                if (err) {
+                  callback(err, results);
+                } else {
+                  console.log("possibly created ticket with randomid (?)", results, "err", err);
+                  callback(idSearchErr, idSearchResults);
+                }
+              })
             }
           })
         });
@@ -46,7 +54,8 @@ module.exports = {
     },
     redeem: function (params, callback) {
       console.log("This is params", params)
-      var ticket = "SELECT * FROM tickets WHERE receivedBy LIKE " + params[0] + " AND redeemed LIKE false LIMIT 1;";
+      var userUpdate = params[0];
+      var ticket = "SELECT * FROM tickets WHERE receivedBy LIKE " + userUpdate + " AND redeemed LIKE false LIMIT 1;";
       console.log(ticket)
       db.query(ticket, function(err, results) {
         console.log('redeem select query results', results)
@@ -55,8 +64,15 @@ module.exports = {
         console.log('ticket query redeem result', results)
         var changeRedeemVal = "UPDATE tickets SET redeemed=1 WHERE id=" + results[0].id + ";";
         db.query(changeRedeemVal, function (err, results) {
-          console.log("change ticket value results", results)
-          callback(ticketSearchError, ticketSearchResult);
+          var incrementReedemed = "UPDATE users SET ticketRedeemed = ticketRedeemed + 1 WHERE id=" + userUpdate + ";";
+          db.query(incrementReedemed, function (err, results) {
+            if(err) {
+              callback(err, results)
+            } else {
+              console.log("change ticket value results", results);
+              callback(ticketSearchError, ticketSearchResult);
+            }
+          })
         })
       })
     }
