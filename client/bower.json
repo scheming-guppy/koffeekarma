@@ -1,0 +1,24 @@
+{
+  "name": "2015-10-greenfield",
+  "description": "scheming-guppy",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "https://github.com/shashi-dokania/2015-10-greenfield",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "Materialize": "materialize#~0.97.3"
+  }
+}
