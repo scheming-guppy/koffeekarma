@@ -1,10 +1,26 @@
-<div id='signin' class='input-group container-fluid'>
-  <h1>sign in</h1>
-  <form name="signinForm" ng-submit='signin()'>
-    <div ng-model="hideSigninError" ng-hide="hideSigninError" class="ng-hide">The user name and password do not match.</div>
-    <input type='text' placeholder='Username' ng-model='user.userName'>
-    <input type="password" placeholder='Password' ng-model='user.password'>
-    <button>Login</button>
-  </form>
-  <span>Don't have an account? </span><button class="signupBtn"><a href="#/signup">Signup here</a></button>
+<div id='signin'>
+
+  <center>
+    <div class="row">
+      <div class="col s12 m3 offset-m5" style="color: white; margin-right: 50%">
+        <div>
+          <form name="signinForm" ng-submit='signin()'>
+            <div ng-model="hideSigninError" ng-hide="hideSigninError" class="ng-hide">The user name and password do not match.</div>
+            <input type='text' placeholder='Username' ng-model='user.userName'>
+            <input type="password" placeholder='Password' ng-model='user.password'>
+            <button class="btn waves-effect waves-light" name="action">Login
+              <i class="material-icons right">input</i>
+            </button>
+          </form>
+          <br>
+          <span>Don't have an account? </span>
+          <br>
+          <button class="signupBtn btn waves-effect waves-light" name="action"><a href="#/signup" style="color: white">Signup</a>
+            <i class="material-icons right">library_add</i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </center>
 </div>
