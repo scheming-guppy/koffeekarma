@@ -10,7 +10,7 @@ angular.module('mainpage', [])
 
   $scope.user = {};
 
-  $scope.user.tickets = Auth.user.ticketSent - Auth.user.ticketAvailable;
+  $scope.user.tickets = Auth.user.ticketAvailable - Auth.user.ticketRedeemed;
 
   if($scope.user.tickets > 0) {
     $scope.toggleRedeemBtn = "modal";
@@ -20,7 +20,6 @@ angular.module('mainpage', [])
 
   $scope.user.firstName = Auth.user.firstName;
   $scope.user.lastName = Auth.user.lastName;
-  $scope.user.age = Auth.user.age;
   $scope.user.userName = Auth.user.userName;
   $scope.user.id = Auth.user.id;
   $scope.user.message = "Have a nice day! Enjoy your coffee!";
