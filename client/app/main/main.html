@@ -1,6 +1,7 @@
-<div class="row" style="display: inline">
-        <div class="col s12 m2">
-          <div class="card">
+<div class="row">
+        
+        <div class="col s3" id="profile">
+          <div class="card large">
             <div class="card-image">
               <img src="../../styles/profile.jpeg">
               <span class="card-title">Profile</span>
@@ -15,26 +16,28 @@
             </div>
           </div>
         </div>
-      </div>
 
 <!-- <div class="container col-md-6" style="float: right">
   <button ng-click="send()">Send</button>
   <div ng-hide="hideSentMessage" class="ng-hide">You just tickIt forward!</div> -->
 
-<div class="row">
-        <div class="col s12 m2" style="display: inline">
-          <div class="card">
+
+        <div class="col s3" id="send">
+          <div class="card large">
             <div class="card-image">
               <img src="../../styles/send-coffee.jpg">
             </div>
           
             <div class="card-action">
-              <button ng-click="send()">Send</button>
+              <form>
+                <input type="text" ng-model="sendMessage" placeholder="Send a message with your Offering"></input>
+                <button type="submit" ng-click="send()">Send an Offering</button>
+              </form>
               <div ng-hide="hideSentMessage" class="ng-hide">You just made somebody's day brighter!</div>
             </div>
           </div>
         </div>
-      </div>
+
 
   <!-- <div class="container"> -->
   <!-- Trigger the modal with a button -->
@@ -116,23 +119,28 @@
     </div>
   </div> -->
 <!-- </div> -->
-<div class="row">
-  <div class="col s12 m2">
-      <div class="card" ng-click="redeem()">
+
+  <div class="col s3" id="redeem">
+      <div class="card large" ng-click="redeem()">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="../styles/redeem-coffee.jpg">
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Redeem</span>
+          <span class="card-title activator grey-text text-darken-4">Redeem your Offering</span>
+            <div>Offerings remaining on your account:</div>
+            <div ng-model="user.tickets">{{ user.tickets }}</div>
+            <div ng-hide="hideNoTicketsMessage" class="ng-hide">Sorry, you have no more tickets!</div>
         </div>
         <div ng-model="toggleRedeemBtn" class="{{ toggleRedeemBtn }}">
           <span class="card-title grey-text text-darken-4">Enjoy your free cup of coffee!<i class="material-icons right">close</i></span>
           <img src='../styles/qrcode.png' style="width: 50px height: 50px"/>
+          <div>Message from your benefactor:</div>
+          <div id="receivedMessage" ng-model="message"><strong>{{message}}</strong></div>
           <br>
           <div ng-model="ticketID">Ticket ID: {{ticketID}}</div>
         </div>
-        <div ng-model="user.tickets">{{ user.tickets }}</div>
-        <div ng-hide="hideNoTicketsMessage" class="ng-hide">Sorry, you have no more tickets!</div>
+
       </div>
-  <div>
+  </div>
+
 </div>

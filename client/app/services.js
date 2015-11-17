@@ -3,7 +3,7 @@ angular.module('services', [])
 .factory('Tickets', function($http, $location, $window) {
 
   var send = function(user) {
-    console.log('Reaching the service');
+    console.log('Reaching the service, user:', user);
     return $http( {
       method: 'POST',
       url: '/api/tickets/send',

@@ -77,4 +77,30 @@ body {
   font-size: 22px;
 }
 
+#profile {
+  margin-left: 6%;
+  margin-top: 50px;
+  height: 400px;
+}
+
+#send {
+  margin-left: 8%;
+  margin-top: 50px;
+  height: 400px;
+}
+
+#redeem {
+  margin-left: 8%;
+  margin-top: 50px;
+  height: 400px;
+}
+
+.card-content {
+  height: 200px;
+}
+
+#receivedMessage {
+  font-size: 30px;
+}
+
 
