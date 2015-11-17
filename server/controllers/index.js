@@ -1,53 +1,47 @@
 var models = require('../models');
+var bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
-
-  signin: {
-    post: function (req, res) {
-      console.log("In post woooooo");
+signin: { // Receiving calls to signin
+    post: function (req, res) { // Post request
+      // For this request, only userName and password are necessary
       var params = [req.body.userName, req.body.password];
+      // We pass them in as params to models/index.js
       models.users.signin(params, function(err, results) {
         if (err) { 
-          res.sendStatus(401)
+          res.sendStatus(401);
         } else {
-          if ( results.password === req.body.password ) {
-            console.log( "successfuly signin after pw check" );
+          // Below is a bcrypt check for hashed password use
+          if ( !bcrypt.compareSync(req.body.password, results.password) ) {
+            res.sendStatus(401);
+          } else {
+            res.send(results);
           }
-          console.log("results from controller signin", results);
-          res.send(results);
-
         }
-        // res.sendStatus(201);
-        // need to hash req.body.password here and then compare to the
-        // results password
       });
     }
   },
-  signup: {
-    post: function (req, res) {
-      console.log("In the controller signup function........", req.body)
-     var params = [req.body.userName, req.body.firstName, req.body.lastName, req.body.password]//image??
-     models.users.signup(params, function (err, results){
-      console.log("This is results.....", results)
-      // if ( results === false ) { err = true; }
-      if (err) { 
-        console.log("Signup failed!", err); 
-        res.sendStatus(401) 
-      } else {
-
-      console.log("Is this wroking headers")
-      console.log("This is a signup attempt that shoudl work", results)
-      // res.sendStatus(201);
-      res.send(results)
-      } 
-
-     });
+  signup: { // Receiving calls to signup
+    post: function (req, res) { // Post request
+      // When signing up, we hash the password before sending the user info to
+      // the database
+      var hash = bcrypt.hashSync(req.body.password)
+      var params = [req.body.userName, req.body.firstName, req.body.lastName, hash];
+      // We pass the above to models/index.js
+      models.users.signup(params, function (err, results){
+        if (err) { 
+          console.log("Signup failed!", err); 
+          res.sendStatus(401) 
+        } else {
+          res.send(results)
+        } 
+      });
     }
   },
-  send: {
-    post: function (req, res) {
+  send: { // Receiving calls to send
+    post: function (req, res) { // Post request
       var params = [req.body.id, req.body.message];
-      console.log("params in controllers", params)
+      // The above gets sent to models/index.js
       models.users.send(params, function (err, results){
         if (err) {
           res.sendStatus(401);
@@ -57,19 +51,16 @@ module.exports = {
       });
     }
   },
-  redeem: {
-    post: function (req, res) {
-      console.log("This is req.body.id...", req.body.id)
+  redeem: { // Receiving calls to redeem
+    post: function (req, res) { //Post request
       var params = [req.body.id];
-      console.log('params in controllers', params)
+      //The above gets sent to models/index.js
       models.users.redeem(params, function (err, results) {
         if (err) {
           res.sendStatus(401);
         } else {
-          console.log('results of redeem call controllers index',results)
           res.sendStatus(201);
         }
-          // res.sendStatus(201);
       });
     }
   }

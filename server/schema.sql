@@ -8,7 +8,7 @@ CREATE TABLE users (
   userName varchar(50) NOT NULL,
   firstName varchar(20) NOT NULL,
   lastName varchar(30) NOT NULL,
-  password varchar(50) NOT NULL,
+  password varchar(100) NOT NULL,
   ticketRedeemed int(5),
   ticketSent int(5),
   ticketAvailable int(5),
