@@ -46,7 +46,7 @@ signin: { // Receiving calls to signin
         if (err) {
           res.sendStatus(401);
         } else {
-          res.sendStatus(201);
+          res.status(201).send(results[0]);
         }
       });
     }
@@ -59,7 +59,7 @@ signin: { // Receiving calls to signin
         if (err) {
           res.sendStatus(401);
         } else {
-          res.sendStatus(201);
+          res.status(201).send(results[0]);
         }
       });
     }

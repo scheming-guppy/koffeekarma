@@ -28,6 +28,7 @@ angular.module('mainpage', [])
   $scope.send = function() {
     console.log('reaching the controller, send function');
     console.log($scope.user);
+    $scope.user.message = $scope.sendMessage;
     //use service to make request to server (post request)
     Tickets.send($scope.user).then(function(data) {
       console.log('sent!');
@@ -50,6 +51,8 @@ angular.module('mainpage', [])
       $scope.toggleRedeemBtn = "hide";
     } else {
       Tickets.redeem($scope.user).then(function(data) {
+        console.log("redeem click, data:", data);
+        $scope.message = data.message;
         $scope.ticketID = data.id;
         console.log(data.id);//The ticket barcode
         $scope.user.tickets--;
