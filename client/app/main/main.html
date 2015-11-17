@@ -1,30 +1,51 @@
-<div class="container col-md-4" style="display: inline-block">
- <div>
-   <img src=""/>
- </div>
- <div>
-   <span>User Name: {{ user.userName }}</span><br>
-   <span>Name: <p>{{ user.firstName }}</p> <p>{{ user.lastName }}</p></span>
-   <!-- <span>Location: </span> TODO: add location functionality-->
- </div>
- <button>Edit Profile</button>
-</div>
+<div class="row" style="display: inline">
+        <div class="col s12 m2">
+          <div class="card">
+            <div class="card-image">
+              <img src="../../styles/profile.jpeg">
+              <span class="card-title">Profile</span>
+            </div>
+            <div class="card-content">
 
-<div class="container col-md-6" style="float: right">
+            User Name:  {{ user.userName }}<br><br>
+            <span>Name: {{ user.firstName }} {{ user.lastName }} </span>
+          </div>
+            <div class="card-action">
+              <a href="#">Edit Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- <div class="container col-md-6" style="float: right">
   <button ng-click="send()">Send</button>
-  <div ng-hide="hideSentMessage" class="ng-hide">You just tickIt forward!</div>
-<!--   <button ng-click="redeem()">Redeem</button> -->
+  <div ng-hide="hideSentMessage" class="ng-hide">You just tickIt forward!</div> -->
 
-  <div class="container">
+<div class="row">
+        <div class="col s12 m2" style="display: inline">
+          <div class="card">
+            <div class="card-image">
+              <img src="../../styles/send-coffee.jpg">
+            </div>
+          
+            <div class="card-action">
+              <button ng-click="send()">Send</button>
+              <div ng-hide="hideSentMessage" class="ng-hide">You just made somebody's day brighter!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- <div class="container"> -->
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" ng-model="toggleRedeemBtn" data-toggle="{{ toggleRedeemBtn }}" ng-click="redeem()" data-target="#myModal">Redeem</button>
+ <!--  <button type="button" class="btn btn-info btn-lg" ng-model="toggleRedeemBtn" data-toggle="{{ toggleRedeemBtn }}" ng-click="redeem()" data-target="#myModal">Redeem</button> -->
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+  <!-- <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog"> -->
     
       <!-- Modal content-->
-      <div class="modal-content">
+      <!-- <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Enjoy your free cup of coffee!</h4>
@@ -45,11 +66,73 @@
   </div>
 
   <div ng-model="user.tickets">{{ user.tickets }}</div>
-  <div ng-hide="hideNoTicketsMessage" class="ng-hide">Sorry, you have no more tickets!</div>
+  <div ng-hide="hideNoTicketsMessage" class="ng-hide">Sorry, you have no more tickets!</div> -->
   <!-- <span>Redeem Number</span> -->
-  <div>Messages</div>
+  <!-- <div>Messages</div>
+</div> -->
+
+
+<!-- <div class="row">
+  <div class="col s12 m2">
+    <div class="card">
+      <div class="card-image">
+        <img src="../../styles/redeem-coffee.jpg">
+      </div>
+    
+      <div class="card-action">
+        <button type="button" class="btn btn-info btn-lg" ng-model="toggleRedeemBtn" data-toggle="{{ toggleRedeemBtn }}" ng-click="redeem()" data-target="#myModal">Redeem</button> -->
+
+  <!-- Modal -->
+     <!--  <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+     -->
+      <!-- Modal content-->
+     <!--  <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Enjoy your free cup of coffee!</h4>
+        </div>
+        <div class="modal-body">
+          <img src='../styles/qrcode.png' style="width: 50px height: 50px"/>
+          <br>
+          <div ng-model="ticketID">Ticket ID: {{ticketID}}</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  </div>
+
+    <div ng-model="user.tickets">{{ user.tickets }}</div>
+    <div ng-hide="hideNoTicketsMessage" class="ng-hide">Sorry, you have no more tickets!</div> -->
+    <!-- <span>Redeem Number</span> -->
+<!--     <div>Messages</div>
 </div>
-
-
-
-
+      </div>
+    </div>
+  </div> -->
+<!-- </div> -->
+<div class="row">
+  <div class="col s12 m2">
+      <div class="card" ng-click="redeem()">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="../styles/redeem-coffee.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Redeem</span>
+        </div>
+        <div ng-model="toggleRedeemBtn" class="{{ toggleRedeemBtn }}">
+          <span class="card-title grey-text text-darken-4">Enjoy your free cup of coffee!<i class="material-icons right">close</i></span>
+          <img src='../styles/qrcode.png' style="width: 50px height: 50px"/>
+          <br>
+          <div ng-model="ticketID">Ticket ID: {{ticketID}}</div>
+        </div>
+        <div ng-model="user.tickets">{{ user.tickets }}</div>
+        <div ng-hide="hideNoTicketsMessage" class="ng-hide">Sorry, you have no more tickets!</div>
+      </div>
+  <div>
+</div>

@@ -54,3 +54,27 @@ body {
   background-image: url("background.jpeg");
 }
 
+.brand-logo {
+  margin-top: 13px;
+  margin-left: 20px;
+}
+
+#signin {
+  margin-top: 200px;
+  margin-left: 43%;
+}
+
+#signup {
+  margin-top: 200px;
+  margin-left: 43%;
+}
+
+#about {
+  opacity: 0.4;
+  margin-left: 20%;
+  margin-top: 50px;
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  font-size: 22px;
+}
+
+

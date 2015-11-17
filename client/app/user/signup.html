@@ -1,4 +1,4 @@
-<div id='signup' class='input-group container-fluid'>
+<!-- <div id='signup' class='input-group container-fluid'>
   <h1>sign up</h1>
   <form name="signupForm" ng-submit='signup()'>
     <div ng-model="hideSignupError" ng-hide="hideSignupError" class="ng-hide">Username is already taken.</div>
@@ -10,3 +10,32 @@
   </form>
   <span>Already have an account? </span><button class="signupBtn"><a href="#/signin">Signin</a>
 </div>
+-->
+<div id='signup'>
+  <center>
+    <div class="row">
+      <div class="col s12 m3" style="color: white">
+        <div>
+          <form name="signupForm" ng-submit='signup()'>
+            <div ng-model="hideSignupError" ng-hide="hideSignupError" class="ng-hide">Username is already taken.</div>
+            <input type='text' placeholder='Username' ng-model='user.userName'>
+            <input type="password" placeholder='Password' ng-model='user.password'>
+            <input type="text" placeholder='First Name' ng-model="user.firstName">
+            <input type="text" placeholder='Last Name' ng-model="user.lastName">
+            <button class="btn waves-effect waves-light" name="action">Signup
+              <i class="material-icons right">library_add</i>
+            </button>
+          </form>
+          <br>
+          <span>Already have an account?</span>
+          <br>
+          <button class="signinBtn btn waves-effect waves-light" name="action"><a href="#/signin" style="color: white">Login</a>
+            <i class="material-icons right">input</i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </center>
+</div>
+

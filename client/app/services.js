@@ -8,10 +8,14 @@ angular.module('services', [])
       method: 'POST',
       url: '/api/tickets/send',
       data: user
-    });
+    })
+    .then(function(response) {
+      return response.data;
+    })
   };
 
   var redeem = function(user) {
+    console.log('reaching redeem service, user data:', user);
     return $http( {
       method: 'POST',
       url: '/api/tickets/redeem',
