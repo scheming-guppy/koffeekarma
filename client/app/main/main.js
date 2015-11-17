@@ -13,9 +13,9 @@ angular.module('mainpage', [])
   $scope.user.tickets = Auth.user.ticketAvailable - Auth.user.ticketRedeemed;
 
   if($scope.user.tickets > 0) {
-    $scope.toggleRedeemBtn = "modal";
+    $scope.toggleRedeemBtn = "card-reveal";
   } else {
-    $scope.toggleRedeemBtn = "";
+    $scope.toggleRedeemBtn = "hide";
   }
 
   $scope.user.firstName = Auth.user.firstName;
@@ -29,10 +29,15 @@ angular.module('mainpage', [])
     console.log('reaching the controller, send function');
     console.log($scope.user);
     //use service to make request to server (post request)
-    Tickets.send($scope.user).then(function() {
+    Tickets.send($scope.user).then(function(data) {
       console.log('sent!');
-      $scope.user.tickets++;//TODO: change according to data from server
-      $scope.toggleRedeemBtn = "modal";
+      console.log('Data coming from server after clicking send button:', data);
+      $scope.user.tickets = data.ticketAvailable - data.ticketRedeemed;
+      //$scope.user.tickets++;//TODO: change according to data from server
+      // if($scope.user.tickets > 0) {
+      //   $scope.hideNoTicketsMessage = true;
+      //   $scope.toggleRedeemBtn = "card-reveal";
+      // }
       $scope.hideSentMessage = false;
 
     });
@@ -42,7 +47,7 @@ angular.module('mainpage', [])
     console.log('reaching the controller, redeem function');
     if($scope.user.tickets <= 0) {
       $scope.hideNoTicketsMessage = false;
-      $scope.toggleRedeemBtn = "";
+      $scope.toggleRedeemBtn = "hide";
     } else {
       Tickets.redeem($scope.user).then(function(data) {
         $scope.ticketID = data.id;
