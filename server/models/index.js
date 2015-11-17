@@ -60,7 +60,7 @@ module.exports = {
                 db.query(senderInfo, function (err, results) {
                   // Here, results is the sender's info. We return this in callback to update mainpage info
                   callback(err, results);
-                })
+                });
                 // callback(idSearchErr, idSearchResults);
               }
             });
@@ -75,6 +75,7 @@ module.exports = {
     db.query(ticket, function(err, results) {
       var ticketSearchResult = results;
       var ticketSearchError = err;
+      console.log("Results in redeem....", results);
       var changeRedeemVal = "UPDATE tickets SET redeemed=1 WHERE id=" + results[0].id + ";";
       db.query(changeRedeemVal, function (err, results) {
         var incrementReedemed = "UPDATE users SET ticketRedeemed = ticketRedeemed + 1 WHERE id=" + userUpdate + ";";

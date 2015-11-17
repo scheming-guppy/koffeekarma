@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Sam Crawford
+  - __Scrum Master__: Will Henshaw
+  - __Development Team Members__: Shashi Dokania Prasad, Si Wang
 
 ## Table of Contents
 
@@ -24,11 +24,9 @@
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Express 4.13.3
+- Mysql 2.9
+- bcrypt-nodejs 0.0.3
 
 ## Development
 
@@ -37,9 +35,7 @@
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
-npm install
-bower install
+  npm install
 ```
 
 ### Roadmap
